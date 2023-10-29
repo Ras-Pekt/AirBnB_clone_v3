@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.register_blueprint(app_views)
 
 @app.teardown_appcontext
-def remove_session(e):
+def remove_session(err):
     """
     removes the current SQLAlchemy Session
     """
