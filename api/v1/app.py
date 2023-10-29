@@ -21,15 +21,13 @@ def remove_session(e):
 
 
 if __name__ == "__main__":
-    host = getenv("HBNB_API_HOST", "0.0.0.0")
-    port = int(getenv("HBNB_API_PORT", 5000))
 
-    # host = getenv("HBNB_API_HOST")
-    # port = getenv("HBNB_API_PORT")
-
-    # if not host:
-    #     host = "0.0.0.0"
-    # if not port:
-    #     port = "5000"
-
-    app.run(host=host, port=port, debug=True, threaded=True)
+    """entry point
+    """
+    host = getenv('HBNB_API_HOST')
+    port = getenv('HBNB_API_PORT')
+    if not host:
+        host = '0.0.0.0'
+    if not port:
+        port = '5000'
+    app.run(host=host, port=port, threaded=True)

@@ -12,4 +12,4 @@ def status_route():
     """
     returns status of route
     """
-    return jsonify(status="OK")
+    return jsonify({"status": "OK"})
