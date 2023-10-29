@@ -53,7 +53,7 @@ def post_state():
 
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def put_state(state_id):
-    """ Updates a State object """
+    """ Updates a State object by id """
     state = storage.get(State, state_id)
     if not state:
         abort(404)
