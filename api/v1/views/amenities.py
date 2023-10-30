@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""State objects that handles all default RESTFul API actions"""
+"""Amenity objects that handles all default RESTFul API actions"""
 
 from models.amenity import Amenity
 from models import storage
