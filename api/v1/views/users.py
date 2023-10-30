@@ -17,11 +17,7 @@ def get_users():
     return jsonify(d_list)
 
 
-@app_views.route(
-        "/users/<user_id>",
-        methods=["GET"],
-        strict_slashes=False
-)
+@app_views.route("/users/<user_id>", methods=["GET"], strict_slashes=False)
 def get_user(user_id):
     """gets an user by id"""
     user_obj = storage.get(User, user_id)
@@ -30,11 +26,7 @@ def get_user(user_id):
     return jsonify(user_obj.to_dict())
 
 
-@app_views.route(
-        "/users/<user_id>",
-        methods=["DELETE"],
-        strict_slashes=False
-)
+@app_views.route("/users/<user_id>", methods=["DELETE"], strict_slashes=False)
 def delete_user(user_id):
     """deletes a user by id"""
     user_obj = storage.get(User, user_id)
@@ -62,11 +54,7 @@ def post_user():
     return make_response(jsonify(new_post.to_dict()), 201)
 
 
-@app_views.route(
-        '/users/<user_id>',
-        methods=['PUT'],
-        strict_slashes=False
-)
+@app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def put_user(user_id):
     """ Updates a User object by id """
     user = storage.get(User, user_id)
