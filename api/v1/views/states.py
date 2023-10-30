@@ -6,6 +6,7 @@ from models import storage
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
 
+
 @app_views.route("/states", methods=["GET"], strict_slashes=False)
 def list_states():
     """retrives lists of states from storage"""
@@ -53,7 +54,7 @@ def post_state():
 
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def put_state(state_id):
-    """ Updates a State object """
+    """ Updates a State object by id """
     state = storage.get(State, state_id)
     if not state:
         abort(404)
@@ -67,4 +68,3 @@ def put_state(state_id):
             setattr(state, k, v)
     storage.save()
     return make_response(jsonify(state.to_dict()), 200)
-
