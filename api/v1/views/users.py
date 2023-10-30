@@ -52,8 +52,10 @@ def post_user():
     if not my_post:
         abort(400, description="Not a JSON")
 
-    if 'name' not in my_post:
-        abort(400, description="Missing name")
+    if 'email' not in my_post:
+        abort(400, description="Missing email")
+    if 'password' not in my_post:
+        abort(400, description="Missing password")
     new_post = User(**my_post)
     storage.new(new_post)
     storage.save()
@@ -75,8 +77,9 @@ def put_user(user_id):
     if not body_request:
         abort(400, "Not a JSON")
 
+    this_list = ['id', 'email', 'created_at', 'updated_at']
     for k, v in body_request.items():
-        if k != 'id' and k != 'created_at' and k != 'updated_at':
+        if k not in this_list:
             setattr(user, k, v)
     storage.save()
     return make_response(jsonify(user.to_dict()), 200)
